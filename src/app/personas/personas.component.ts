@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormularioComponent } from './formulario/formulario.component';
 import { Persona } from '../persona.model';
-import { PersonasService } from '../persona.service';
+import { PersonasService } from '../personas.service';
 import { Router } from '@angular/router';
 import { PersonaComponent } from './persona/persona.component';
 

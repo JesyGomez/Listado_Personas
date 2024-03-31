@@ -3,7 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import { Persona } from './persona.model';
 import { CommonModule } from '@angular/common';
 import { LoggingService } from './LoggingService.service';
-import { PersonasService } from './persona.service';
+import { PersonasService } from './personas.service';
 import { PersonaComponent } from './personas/persona/persona.component';
 import { FormularioComponent } from './personas/formulario/formulario.component';
 import { PersonasComponent } from './personas/personas.component';
