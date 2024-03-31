@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
   standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './formulario.component.html',
+})
 export class FormularioComponent {
   // este ya no es funcional porque lo conectamos a través del service @Output() personaCreada = new EventEmitter<Persona>();
    nombreInput:string = '';

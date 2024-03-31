@@ -1,10 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { PersonaComponent } from './persona/persona.component';
 import { FormularioComponent } from './formulario/formulario.component';
 import { Persona } from '../persona.model';
 import { PersonasService } from '../persona.service';
-import { LoggingService } from '../LoggingService.service';
+import { Router } from '@angular/router';
+import { PersonaComponent } from './persona/persona.component';
 
 @Component({
   selector: 'app-personas',
@@ -16,10 +16,16 @@ import { LoggingService } from '../LoggingService.service';
 export class PersonasComponent implements OnInit{
   personas: Persona[] = [];
   
-  constructor(private loggingService: LoggingService, 
-    private personasService: PersonasService){}
+  constructor(
+    private personasService: PersonasService,
+    private router: Router
+    ){}
   
     ngOnInit(): void {
       this.personas = this.personasService.personas;
+    }
+
+    agregar(){
+    this.router.navigate(['personas/agregar']);
     }
 }
