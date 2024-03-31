@@ -4,6 +4,7 @@ import { Persona } from './persona.model';
 
 @Injectable()
 export class PersonasService {
+  // [x: string]: any;
   personas: Persona[] = [
     new Persona('Liam', 'González'),
     new Persona('Ethan', 'González'),
@@ -30,4 +31,8 @@ export class PersonasService {
     persona1.nombre = persona.nombre;
     persona1.apellido = persona.apellido;
   }
+  eliminarPersona(index:number){
+    this.personas.splice(index,1);
+  }
+
 }
