@@ -1,13 +1,14 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
-import { Persona } from '../persona.model';
+import { Component } from '@angular/core';
+import { Persona } from '../../persona.model';
 import { FormsModule } from '@angular/forms';
-import { LoggingService } from '../LoggingService.service';
-import { PersonasService } from '../persona.service';
+import { LoggingService } from '../../LoggingService.service';
+import { PersonasService } from '../../persona.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-formulario',
   standalone: true,
-  imports: [FormsModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './formulario.component.html',
   styleUrl: './formulario.component.css',
   providers: [LoggingService, PersonasService],

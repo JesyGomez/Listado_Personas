@@ -1,11 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Persona } from '../persona.model';
-import { PersonasService } from '../persona.service';
+import { Persona } from '../../persona.model';
+import { PersonasService } from '../../persona.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-persona',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './persona.component.html',
   styleUrl: './persona.component.css',
   providers: [PersonasService]
