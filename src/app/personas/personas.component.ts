@@ -9,20 +9,31 @@ import { PersonaComponent } from './persona/persona.component';
 @Component({
   selector: 'app-personas',
   standalone: true,
-  imports: [CommonModule, PersonaComponent, FormularioComponent, RouterOutlet],
+  imports: [CommonModule, 
+    PersonaComponent, 
+    FormularioComponent, 
+    RouterOutlet],
   templateUrl: './personas.component.html',
   styleUrl: './personas.component.css'
 })
 export class PersonasComponent implements OnInit{
+  
   personas: Persona[] = [];
   
   constructor(
     private personasService: PersonasService,
     private router: Router
     ){}
+
   
     ngOnInit(): void {
-      this.personas = this.personasService.personas;
+      this.personasService.obtenerPersonas()
+      .subscribe(
+        (personas: Persona[]) => {
+          this.personas = personas;
+          this.personasService.setPersonas(personas);
+        }
+      );
     }
 
     agregar(){
