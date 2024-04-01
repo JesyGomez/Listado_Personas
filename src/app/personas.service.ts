@@ -43,9 +43,18 @@ export class PersonasService {
     persona1.apellido = persona.apellido;
     this.dataServices.modificarPersona(index, persona);
   }
-  
+
   eliminarPersona(index:number){
     this.personas.splice(index,1);
+    this.dataServices.eliminarPersona(index);
+   //Para que los indices de la base de datos se regeneren vamos a mandar a cargar nuevamente todo el arreglo de persona para que se regeneren los indices
+   this.modificarPersonas();
+  }
+
+  modificarPersonas(){
+    if(this.personas != null){
+      this.dataServices.guardarPersonas(this.personas);
+    }
   }
 
 }

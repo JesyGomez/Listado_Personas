@@ -46,4 +46,13 @@ export class DataServices{
             response => console.log("resultado de modificar el objeto persona: " + response)
         );
     }
+
+    eliminarPersona(index:number){
+        let url: string;
+        url = 'https://listado-personas-3b07b-default-rtdb.firebaseio.com/datos/' + index + '.json';
+        this.httpCliente.delete(url)
+        .subscribe(
+            response => console.log("resultado de eliminar persona: " + response)
+        );
+    }
 }
