@@ -6,7 +6,6 @@ import { Observable } from "rxjs";
 @Injectable()
 export class DataServices{
     constructor(private httpCliente:HttpClient){ }
-
     cargarPersonas():Observable<any>{
         return this.httpCliente.get('https://listado-personas-3b07b-default-rtdb.firebaseio.com/datos.json');
     }
@@ -34,9 +33,17 @@ export class DataServices{
     guardarPersonas(personas:Persona[]){
         this.httpCliente.put('https://listado-personas-3b07b-default-rtdb.firebaseio.com/datos.json', personas).subscribe(
             response => {
-                console.log("resultado de guardar las personas" + response);
-            },
-            error => console.log("Error al guardar personas: " + error)
+                console.log("resultado de guardar las personas" + response)
+                    }
+             );
+    }
+
+    modificarPersona(index: number, persona:Persona){
+        let url: string;
+        url = 'https://listado-personas-3b07b-default-rtdb.firebaseio.com/datos/' + index + '.json';
+        this.httpCliente.put(url, persona)
+        .subscribe(
+            response => console.log("resultado de modificar el objeto persona: " + response)
         );
     }
 }
