@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { LoggingService } from './LoggingService.service';
 import { PersonasService } from './personas.service';
@@ -31,22 +31,33 @@ import { LoginGuardian } from './login/login-guardian.service';
 export class AppComponent implements OnInit{
   title = 'Listado de Personas';
   isLoggedOut = false;
-  constructor(private loginService: LoginService){}
+
+  constructor(private loginService: LoginService, 
+    private router: Router){}
+    
   ngOnInit(): void {
-
+    if (!this.isAutenticado()) {
+      this.isLoggedOut = true;
+    }
     firebase.initializeApp({
-      apiKey: "AIzaSyAoTWB635XctAIDbikokaKpEFEMxsv4jjk",
-      authDomain: "listado-personas-3b07b.firebaseapp.com",
-
+      apiKey: "AIzaSyAp0goRI4T8cJV9JenCK49qdGhUpxwb7gA",
+      authDomain: "listado-personas-89041.firebaseapp.com",
     })}
 
+    redireccionarALogin(): void {
+      this.router.navigate(['/login']);
+    }
     isAutenticado(){
      return this.loginService.isAutenticado();
     }
-
+    restablecerIsLoggedOut(): void {
+      this.isLoggedOut = false;
+    }
+    
     salir(){
     this.loginService.logout();
     this.isLoggedOut = true;
+    this.router.navigate(['/login']); // Redirige al usuario al login
     }
   }
     // const firebaseConfig = {

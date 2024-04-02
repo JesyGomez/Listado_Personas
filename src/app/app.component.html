@@ -1,6 +1,7 @@
 <div *ngIf="!isAutenticado()" class="box centrado login-box top">
-  <a routerLink="/login" class="login-link">Login</a>
+  <a class="login-link" (click)="redireccionarALogin()">Login</a>
 </div>
+
 
 <div *ngIf="isAutenticado()" [ngClass]="{ 'hide': isLoggedOut }" class="box centrado login-box botton">
   <a style="cursor: pointer" (click)="salir()" class="login-link">Salir</a>

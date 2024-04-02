@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { LoginService } from './login.service';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,8 @@ import { LoginService } from './login.service';
 })
 export class LoginComponent {
 
-  constructor(private loginService: LoginService) {}
+  constructor(private loginService: LoginService,
+    private appComponent: AppComponent) {}
   
 
   ngOnInit() {
@@ -24,6 +26,7 @@ export class LoginComponent {
     console.log(email);
     console.log(password);
     this.loginService.login(email, password);
+    this.appComponent.restablecerIsLoggedOut(); 
   }
  
 }
