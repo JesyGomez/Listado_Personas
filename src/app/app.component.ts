@@ -29,15 +29,23 @@ import firebase from 'firebase/compat/app';
 
 export class AppComponent implements OnInit{
   title = 'Listado de Personas';
-
+  constructor(private loginService: LoginService){}
   ngOnInit(): void {
 
     firebase.initializeApp({
       apiKey: "AIzaSyAoTWB635XctAIDbikokaKpEFEMxsv4jjk",
       authDomain: "listado-personas-3b07b.firebaseapp.com",
 
-    })
+    })}
 
+    isAutenticado(){
+     return this.loginService.isAutenticado();
+    }
+
+    salir(){
+    this.loginService.logout();
+    }
+  }
     // const firebaseConfig = {
     //   apiKey: "AIzaSyAoTWB635XctAIDbikokaKpEFEMxsv4jjk",
     //   authDomain: "listado-personas-3b07b.firebaseapp.com",
@@ -51,9 +59,4 @@ export class AppComponent implements OnInit{
     // // Initialize Firebase
     // const app = initializeApp(firebaseConfig);
   
-  }
   
-  
-  
-  
-}
