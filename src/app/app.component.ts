@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { LoginService } from './login/login.service';
 import firebase from 'firebase/compat/app';
+import { LoginGuardian } from './login/login-guardian.service';
 
 @Component({
   selector: 'app-root',
@@ -24,11 +25,12 @@ import firebase from 'firebase/compat/app';
     LoginComponent],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers: [LoggingService, PersonasService, DataServices, LoginService]
+  providers: [LoggingService, PersonasService, DataServices, LoginService, LoginGuardian]
 })
 
 export class AppComponent implements OnInit{
   title = 'Listado de Personas';
+  isLoggedOut = false;
   constructor(private loginService: LoginService){}
   ngOnInit(): void {
 
@@ -44,6 +46,7 @@ export class AppComponent implements OnInit{
 
     salir(){
     this.loginService.logout();
+    this.isLoggedOut = true;
     }
   }
     // const firebaseConfig = {
